@@ -3,18 +3,20 @@
 ---
 - block:
 
-  - name: 'empire : download Docker image'
-    docker_image:
-      name: bcsecurity/empire:latest
-      source: pull
+  - block:
+    - name: 'empire : download Docker image'
+      docker_image:
+        name: bcsecurity/empire:latest
+        source: pull
 
-  - name: 'empire : create data container'
-    docker_container:
-      name: empire-data
-      image: bcsecurity/empire:latest
-      volumes:
-        - /empire
-      state: present
+    - name: 'empire : create data container'
+      docker_container:
+        name: empire-data
+        image: bcsecurity/empire:latest
+        volumes:
+          - /empire
+        state: present
+    become: yes
 
   - name: 'empire : create fish shell alias'
     template:
