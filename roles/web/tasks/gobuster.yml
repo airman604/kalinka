@@ -3,7 +3,7 @@
   apt:
     name: gobuster
     state: present
-    become: yes
+  become: yes
 
   tags:
     - web
