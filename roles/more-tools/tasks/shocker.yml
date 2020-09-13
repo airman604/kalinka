@@ -21,7 +21,7 @@
         dest: /usr/local/bin/shocker
         mode: 0755
         src: ../templates/shocker.sh
-  when: not shocker_binary.stat.exists
+    when: not shocker_binary.stat.exists
 
   become: yes
   tags:
