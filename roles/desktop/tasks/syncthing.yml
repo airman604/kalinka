@@ -14,7 +14,7 @@
       scope: user
 
   - debug:
-    msg: "Visit http://localhost:8384/ to finish configuring Syncthing!"
+      msg: "Visit http://localhost:8384/ to finish configuring Syncthing!"
 
   tags:
     - desktop
