@@ -12,6 +12,7 @@
       line: 'SETUVAR fish_user_paths:{{ ansible_facts.user_dir }}/go/bin'
       path: '~/.config/fish/fish_variables'
       state: present
+      create: yes
 
   - name: 'gloang : create $GOPATH'
     file:
