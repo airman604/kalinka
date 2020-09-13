@@ -12,6 +12,7 @@
 # retries: 10
 # delay: 30
 
+# TODO: add symlink
 ---
 - block:
 
@@ -28,14 +29,25 @@
         mode: '0755'
 
     - name: 'CyberChef : determine the latest version'
-      shell: 'curl --silent "https://api.github.com/repos/gchq/CyberChef/releases/latest" | jq -r .tag_name'
+      uri:
+        url: https://api.github.com/repos/gchq/CyberChef/releases/latest
+        method: GET
+        return_content: yes
+        status_code: 200
+        body_format: json
       register: cyberchef_version
 
     - name: 'CybefChef : download and unpack binaries'
       unarchive:
-        src: 'https://github.com/gchq/CyberChef/releases/download/{{ cyberchef_version.stdout }}/CyberChef_{{ cyberchef_version.stdout }}.zip'
+        src: 'https://github.com/gchq/CyberChef/releases/download/{{ cyberchef_version.json.tag_name }}/CyberChef_{{ cyberchef_version.json.tag_name }}.zip'
         dest: /opt/CyberChef
-        remote_src: yes        
+        remote_src: yes
+
+    - name: 'CyberChef : create a symlink to the latest version'
+      file:
+        src: /opt/CyberChef/CyberChef_{{ cyberchef_version.json.tag_name }}.html
+        dest: /opt/CyberChef/CyberChef.html
+        state: link
     when: not cyberchef_binary.stat.exists
 
   become: yes
