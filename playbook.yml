@@ -2,7 +2,7 @@
 - name: Kalinka
   hosts: all
 
-  include_roles:
+  include:
     - common
     - desktop
     - more-tools
