@@ -17,7 +17,7 @@
         - software-properties-common
       state: present
 
-  - name: 'packages : install virtualenv under Python 2'
+  - name: 'packages : install virtualenv'
     pip:
       name: virtualenv
       state: present
