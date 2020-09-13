@@ -1,3 +1,17 @@
+# TODO: switch out curl to this:
+#
+# - name: check sonar web is up
+# uri:
+#   url: http://sonarhost:9000/sonar/api/system/status
+#   method: GET
+#   return_content: yes
+#   status_code: 200
+#   body_format: json
+# register: result
+# until: result.json.status == "UP"
+# retries: 10
+# delay: 30
+
 ---
 - block:
 
@@ -11,7 +25,7 @@
       file:
         path: /opt/CyberChef
         state: directory
-        mode: '0644'
+        mode: '0755'
 
     - name: 'CyberChef : determine the latest version'
       shell: 'curl --silent "https://api.github.com/repos/gchq/CyberChef/releases/latest" | jq -r .tag_name'
