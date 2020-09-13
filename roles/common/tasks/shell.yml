@@ -13,6 +13,14 @@
       recurse: yes
       state: directory
 
+  - name: 'shell : remove fish greeting'
+    lineinfile:
+      insertafter: EOF
+      line: 'SETUVAR fish_greeting:'
+      path: '~/.config/fish/fish_variables'
+      state: present
+      create: yes
+
   - name: 'shell : configure fish prompt and functions (serve-this, masscan_port_list, masscan_ip_list, extract_unique_domains_from_dnsrecon_json)'
     template:
       dest: '~/.config/fish/functions/{{ item }}'
