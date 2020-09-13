@@ -1,28 +1,28 @@
 ---
-- include_tasks: peda.yml tags=binary-analysis
-- include_tasks: pwntools.yml tags=binary-analysis
-- include_tasks: ropper.yml tags=binary-analysis
+- include: peda.yml tags=binary-analysis
+- include: pwntools.yml tags=binary-analysis
+- include: ropper.yml tags=binary-analysis
 
-- include_tasks: fcrackzip.yml tags=cracking,fcrackzip
-- include_tasks: jtr.yml tags=cracking,jtr
+- include: fcrackzip.yml tags=cracking,fcrackzip
+- include: jtr.yml tags=cracking,jtr
 
-- include_tasks: xortool.yml tags=crypto,xortool
+- include: xortool.yml tags=crypto,xortool
 
-- include_tasks: empire.yml tags=exploitation,empire
-- include_tasks: powersploit.yml tags=exploitation,powersploit
-- include_tasks: supertty.yml tags=exploitation,supertty
+- include: empire.yml tags=exploitation,empire
+- include: powersploit.yml tags=exploitation,powersploit
+- include: supertty.yml tags=exploitation,supertty
 
-- include_tasks: seclists.yml tags=password-attacks,seclists
+- include: seclists.yml tags=password-attacks,seclists
 
-- include_tasks: hostile-sub-bruteforcer.yml tags=recon,hostile-sub-bruteforcer
-- include_tasks: linenum.yml tags=recon,linenum
-- include_tasks: pspy.yml tags=recon,pspy
-- include_tasks: sherlock.yml tags=recon,sherlock
-- include_tasks: s3scanner.yml tags=recon,s3scanner
+- include: hostile-sub-bruteforcer.yml tags=recon,hostile-sub-bruteforcer
+- include: linenum.yml tags=recon,linenum
+- include: pspy.yml tags=recon,pspy
+- include: sherlock.yml tags=recon,sherlock
+- include: s3scanner.yml tags=recon,s3scanner
 
-- include_tasks: mssql-cli.yml tags=utilities,mssql-cli
+- include: mssql-cli.yml tags=utilities,mssql-cli
 
-- include_tasks: eyewitness.yml tags=web,eyewitness
-- include_tasks: gobuster.yml tags=web,gobuster
-- include_tasks: shocker.yml tags=web,shocker
-- include_tasks: wpxf.yml tags=web,wpxf
+- include: eyewitness.yml tags=web,eyewitness
+- include: gobuster.yml tags=web,gobuster
+- include: shocker.yml tags=web,shocker
+- include: wpxf.yml tags=web,wpxf
