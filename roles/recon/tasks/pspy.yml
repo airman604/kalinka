@@ -16,12 +16,12 @@
       repo: https://github.com/DominicBreuker/pspy.git
 
   - name: 'pspy : get dependencies'
-    shell: '/bin/bash -lc "/usr/local/go/bin/go get"'
+    shell: '/bin/bash -lc "go get"'
     args:
       chdir: /tmp/pspy
 
   - name: 'pspy : build 32-bit binary'
-    shell: '/bin/bash -lc "GOARCH=386 /usr/local/go/bin/go build"'
+    shell: '/bin/bash -lc "GOARCH=386 go build"'
     args:
       chdir: /tmp/pspy
 
@@ -33,7 +33,7 @@
       src: /tmp/pspy/pspy
 
   - name: 'pspy : build 64-bit binary'
-    shell: '/bin/bash -lc "GOARCH=amd64 /usr/local/go/bin/go build"'
+    shell: '/bin/bash -lc "GOARCH=amd64 go build"'
     args:
       chdir: /tmp/pspy
 
@@ -49,7 +49,7 @@
       path: '{{ item }}'
       state: absent
     with_items:
-      - /root/.go/bin/pspy
+      - ~/go/bin/pspy
       - /tmp/pspy
 
   become: yes
