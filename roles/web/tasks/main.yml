@@ -1,6 +1,5 @@
 ---
 - include: eyewitness.yml tags=web,eyewitness
 - include: gobuster.yml tags=web,gobuster
-- include: magescan.yml tags=web,magescan
 - include: shocker.yml tags=web,shocker
 - include: wpxf.yml tags=web,wpxf
