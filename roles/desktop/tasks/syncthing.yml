@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: 'syncthing : install package'
+    apt:
+      name: syncthing
+    become: yes
+
+  - name: 'syncthing : enable user service'
+    systemd:
+      state: started
+      enabled: yes
+      name: syncthing
+      scope: user
+
+  - debug:
+    msg: "Visit http://localhost:8384/ to finish configuring Syncthing!"
+
+  tags:
+    - desktop
+    - syncthing
