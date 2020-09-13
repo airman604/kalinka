@@ -18,4 +18,4 @@
       state: present
 
   become: yes
-  tags: desktop, web
+  tags: desktop, insomnia

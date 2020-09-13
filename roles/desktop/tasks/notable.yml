@@ -19,4 +19,6 @@
       mode: '4755'
   
   become: yes
-  tags: desktop
+  tags:
+    - desktop
+    - notable

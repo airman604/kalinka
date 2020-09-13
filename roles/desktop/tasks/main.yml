@@ -1,8 +1,8 @@
 ---
-- include: insomnia.yml tags=desktop,web
-- include: vscode.yml tags=desktop
-- include: notable.yml tags=desktop
-- include: sublime.yml tags=desktop
-- include: syncthing.yml tags=desktop
-- include: cyberchef.yml tags=desktop
-- include: tweaks.yml tags=desktop
+- include: insomnia.yml tags=desktop,insomnia
+- include: vscode.yml tags=desktop,vscode
+- include: notable.yml tags=desktop,notable
+- include: sublime.yml tags=desktop,sublime
+- include: syncthing.yml tags=desktop,syncthing
+- include: cyberchef.yml tags=desktop,cyberchef
+- include: tweaks.yml tags=desktop,tweaks
