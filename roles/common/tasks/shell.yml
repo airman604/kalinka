@@ -25,7 +25,7 @@
       - masscan_ip_list.fish
       - extract_unique_domains_from_dnsrecon_json.fish
 
-  - name: 'shell : set default root shell'
+  - name: 'shell : set default shell'
     user:
       name: '{{ ansible_facts.user_id }}'
       shell: /usr/bin/fish
