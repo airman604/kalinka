@@ -6,6 +6,10 @@
       state: present
     become: yes
 
+  # this is needed for SETUVAR commands in fish_variables to work
+  - name: 'shell : fish_variables workaround'
+    shell: fish -c ''
+
   - name: 'shell : create fish config directory'
     file:
       mode: 0750
