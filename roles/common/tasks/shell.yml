@@ -17,6 +17,7 @@
     lineinfile:
       insertafter: EOF
       line: 'SETUVAR fish_greeting:'
+      regexp: '^SETUVAR fish_greeting:'
       path: '~/.config/fish/fish_variables'
       state: present
       create: yes
