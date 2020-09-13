@@ -10,5 +10,13 @@
       deb: 'https://download.notable.app/?target=deb'
     become: yes
     when: "'notable' not in ansible_facts.packages"
+
+# fix for sandbox error
+- name: 'Notable : fix for sandbox error'
+  file:
+    path: /opt/Notable/chrome-sandbox
+    owner: root
+    group: root
+    mode: '4755'
   
   tags: desktop
