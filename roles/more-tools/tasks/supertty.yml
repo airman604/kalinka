@@ -12,6 +12,7 @@
       build:
         path: /tmp
         dockerfile: supertty.Dockerfile
+        pull: yes
       name: supertty
       source: build
     become: yes
