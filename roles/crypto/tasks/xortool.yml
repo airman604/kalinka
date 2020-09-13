@@ -21,7 +21,7 @@
       state: directory
 
   - name: 'xortool : initialise venv'
-    shell: 'bash -lc "virtualenv -p python2 {{ tool_install_dir }}/xortool/.venv"'
+    shell: 'bash -lc "virtualenv -p python2 /opt/xortool/.venv"'
 
   - name: 'xortool : install docopt'
     pip:
