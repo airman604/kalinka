@@ -27,7 +27,7 @@
 
   - name: 'shell : set default root shell'
     user:
-      name: '{{ ansible_facts['user_id'] }}'
+      name: '{{ ansible_facts.user_id }}'
       shell: /usr/bin/fish
     become: yes
 
