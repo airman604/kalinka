@@ -12,7 +12,7 @@
       repo: https://github.com/FortyNorthSecurity/EyeWitness.git
 
   - name: 'eyewitness : install python dependencies'
-    command: 'bash -lc "/opt/eyewitness/setup/setup.sh"'
+    command: 'bash -lc "/opt/eyewitness/Python/setup/setup.sh"'
 
   - name: 'eyewitness : install launcher'
     template:
