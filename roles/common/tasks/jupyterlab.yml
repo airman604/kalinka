@@ -1,0 +1,11 @@
+---
+- block:
+
+  - name: 'jupyterlab : install'
+    pip:
+      name: jupyterlab
+
+  become: yes
+  tags:
+    - common
+    - jupyterlab

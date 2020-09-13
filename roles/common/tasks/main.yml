@@ -2,6 +2,6 @@
 - include: packages.yml tags=common,packages
 - include: shell.yml tags=common,shell
 - include: golang.yml tags=common,golang
-# - include: composer.yml tags=common,composer,magescan
 - include: docker.yml tags=common,docker
 - include: tmux.yml tags=common,tmux
+- include: jupyterlab.yml tags=common,jupyterlab
