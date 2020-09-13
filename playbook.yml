@@ -2,7 +2,7 @@
 - name: Kalinka
   hosts: all
 
-  import_playbook:
+  roles:
     - common
     - desktop
     - more-tools
