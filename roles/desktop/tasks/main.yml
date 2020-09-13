@@ -5,3 +5,4 @@
 - include: sublime.yml tags=desktop
 - include: syncthing.yml tags=desktop
 - include: cyberchef.yml tags=desktop
+- include: tweaks.yml tags=desktop
