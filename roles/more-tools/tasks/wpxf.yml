@@ -12,7 +12,9 @@
       state: present
 
   - name: 'wpxf : install gem'
-    shell: '/bin/bash -lc "gem install wpxf"'
+    gem:
+      name: wpxf
+      state: present
 
   become: yes
   tags:
