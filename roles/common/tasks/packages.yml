@@ -19,7 +19,6 @@
 
   - name: 'packages : install virtualenv under Python 2'
     pip:
-      executable: pip
       name: virtualenv
       state: present
 
