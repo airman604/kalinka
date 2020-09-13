@@ -3,10 +3,16 @@
 
   - name: 'CyberChef : check existing installation'
     stat:
-        path: /opt/CyberChef
+      path: /opt/CyberChef
     register: cyberchef_binary
 
   - block:
+    - name: 'CyberChef : create target directory'
+      file:
+        path: /opt/CyberChef
+        state: directory
+        mode: '0644'
+
     - name: 'CyberChef : determine the latest version'
       shell: 'curl --silent "https://api.github.com/repos/gchq/CyberChef/releases/latest" | jq -r .tag_name'
       register: cyberchef_version
