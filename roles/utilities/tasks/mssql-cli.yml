@@ -3,7 +3,6 @@
 
   - name: 'mssql-cli : install pip package'
     pip:
-      executable: pip
       name: mssql-cli
       state: present
 
