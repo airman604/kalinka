@@ -2,14 +2,7 @@
 - name: Kalinka
   hosts: all
 
-  roles:
+  include_roles:
     - common
     - desktop
-    - cracking
-    - crypto
-    - exploitation
-    - password-attacks
-    - web
-    - recon
-    - utilities
-    - binary-analysis
+    - more-tools

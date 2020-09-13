@@ -1,0 +1,20 @@
+---
+- block:
+
+  - name: 'supertty : build Docker image'
+    docker_image:
+      build:
+        path: ./templates
+        dockerfile: supertty.Dockerfile
+      name: airman604/supertty
+      source: build
+
+  - name: 'supertty : create fish shell alias'
+    template:
+      dest: '~/.config/fish/functions/supertty.fish'
+      mode: 0644
+      src: '../templates/supertty.fish'
+
+  tags:
+    - exploitation
+    - supertty

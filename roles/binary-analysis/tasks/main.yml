@@ -1,4 +1,0 @@
----
-- include: peda.yml tags=binary-analysis,peda
-- include: pwntools.yml tags=binary-analysis,pwntools
-- include: ropper.yml tags=binary-analysis,ropper

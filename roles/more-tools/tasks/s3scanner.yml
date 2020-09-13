@@ -1,3 +1,9 @@
+# TODO: Move to using Docker
+#     Build the Docker image:
+# sudo docker build -t s3scanner https://github.com/sa7mon/S3Scanner.git
+#     Run the Docker image:
+# sudo docker run -v /input-data-dir/:/data s3scanner --out-file /data/results.txt /data/names.txt
+# This command assumes that names.txt with domains to enumerate is in /input-data-dir/ on host machine.
 ---
 - block:
 

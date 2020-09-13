@@ -1,5 +1,0 @@
----
-- include: eyewitness.yml tags=web,eyewitness
-- include: gobuster.yml tags=web,gobuster
-- include: shocker.yml tags=web,shocker
-- include: wpxf.yml tags=web,wpxf

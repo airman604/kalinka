@@ -1,0 +1,29 @@
+---
+- block:
+
+  - name: 'hostile-sub-bruteforcer : check if already installed'
+    stat:
+      path: /opt/hostile-sub-bruteforcer
+    register: hostile_sub_bruteforcer_binary
+
+  - block:
+    - name: 'hostile-sub-bruteforcer : clone repository'
+      git:
+        accept_hostkey: yes
+        clone: yes
+        depth: 1
+        dest: /opt/hostile-sub-bruteforcer
+        force: yes
+        repo: https://github.com/nahamsec/HostileSubBruteforcer.git
+
+    - name: 'hostile-sub-bruteforcer : install launcher'
+      template:
+        dest: /usr/local/bin/hostile-sub-bruteforcer
+        mode: 0755
+        src: ../templates/hostile-sub-bruteforcer.sh
+    when: not hostile_sub_bruteforcer_binary.stat.exists
+
+  become: yes
+  tags:
+    - recon
+    - hostile-sub-bruteforcer

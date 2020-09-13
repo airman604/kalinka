@@ -1,0 +1,29 @@
+---
+- block:
+
+  - name: 'shocker : check if already installed'
+    stat:
+      path: /usr/local/bin/shocker
+    register: shocker_binary
+
+  - block:
+    - name: 'shocker : clone repository'
+      git:
+        accept_hostkey: yes
+        clone: yes
+        depth: 1
+        dest: /opt/shocker
+        force: yes
+        repo: https://github.com/nccgroup/shocker.git
+
+    - name: 'shocker : install launcher'
+      template:
+        dest: /usr/local/bin/shocker
+        mode: 0755
+        src: ../templates/shocker.sh
+  when: not shocker_binary.stat.exists
+
+  become: yes
+  tags:
+    - web
+    - shocker

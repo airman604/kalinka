@@ -1,6 +1,0 @@
----
-- include: hostile-sub-bruteforcer.yml tags=recon,hostile-sub-bruteforcer
-- include: linenum.yml tags=recon,linenum
-- include: pspy.yml tags=recon,pspy
-- include: sherlock.yml tags=recon,sherlock
-- include: s3scanner.yml tags=recon,s3scanner

@@ -1,0 +1,18 @@
+---
+- block:
+
+  - name: 'linenum : create linux-binaries directory'
+    file:
+      path: /usr/share/linux-binaries
+      state: directory
+
+  - name: 'linenum : download the script'
+    get_url:
+      url: https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+      dest: /usr/share/linux-binaries/LinEnum.sh
+      mode: '0755'
+  
+  become: yes
+  tags:
+    - recon
+    - linenum
