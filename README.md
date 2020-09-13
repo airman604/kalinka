@@ -9,3 +9,4 @@ git clone https://github.com/airman604/kalinka.git
 cd kalinka
 ./run.sh
 ```
+Reboot after running!
