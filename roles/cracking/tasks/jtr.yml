@@ -1,21 +1,5 @@
 ---
-- name: 'jtr : check if already installed'
-  stat:
-    path: /opt/jtr/john
-  register: john_binary
-
-
 - block:
-
-  - name: 'jtr : clone repository'
-    git:
-      accept_hostkey:  yes
-      clone: yes
-      depth: 1
-      dest: /tmp/jtr
-      force: yes
-      repo: https://github.com/magnumripper/JohnTheRipper.git
-      version: bleeding-jumbo
 
   - name: 'jtr : install requirements'
     apt:
@@ -29,44 +13,60 @@
         - pkg-config
         - libbz2-dev
       state: present
-      update_cache: yes
 
-  - name: 'jtr : configure'
-    command: /tmp/jtr/src/configure
-    args:
-      chdir: /tmp/jtr/src
+  - name: 'jtr : check if already installed'
+    stat:
+      path: /opt/jtr/john
+    register: john_binary
 
-  - name: 'jtr : build'
-    command: '{{ item }} chdir=/tmp/jtr/src'
-    with_items:
-      - './configure'
-      - 'make -s clean'
-      - 'make -sj4'
+  - block:
+    - name: 'jtr : clone repository'
+      git:
+        accept_hostkey:  yes
+        clone: yes
+        depth: 1
+        dest: /tmp/jtr
+        force: yes
+        repo: https://github.com/magnumripper/JohnTheRipper.git
+        version: bleeding-jumbo
 
-  - name: 'jtr : install tab completion'
-    make:
-      chdir: /tmp/jtr/src
-      target: shell-completion
+    - name: 'jtr : configure'
+      command: /tmp/jtr/src/configure
+      args:
+        chdir: /tmp/jtr/src
 
-  - name: 'jtr : copy run directory'
-    synchronize:
-      dest: /opt/jtr
-      src: /tmp/jtr/run/
-    delegate_to: '{{ inventory_hostname }}'
+    - name: 'jtr : build'
+      command: '{{ item }} chdir=/tmp/jtr/src'
+      with_items:
+        - './configure'
+        - 'make -s clean'
+        - 'make -sj4'
 
-  # - name: 'jtr : add to path'
-  #   lineinfile:
-  #     line: 'export PATH=/opt/jtr:$PATH'
-  #     path: /root/.zshrc
-  #     regex: 'export PATH=\/opt\/jtr\:\$PATH'
-  #     state: present
+    - name: 'jtr : install tab completion'
+      make:
+        chdir: /tmp/jtr/src
+        target: shell-completion
+
+    - name: 'jtr : copy run directory'
+      synchronize:
+        dest: /opt/jtr
+        src: /tmp/jtr/run/
+      delegate_to: '{{ inventory_hostname }}'
+
+    # - name: 'jtr : add to path'
+    #   lineinfile:
+    #     line: 'export PATH=/opt/jtr:$PATH'
+    #     path: /root/.zshrc
+    #     regex: 'export PATH=\/opt\/jtr\:\$PATH'
+    #     state: present
+
+    when: not john_binary.stat.exists
 
   - name: 'jtr : remove build fragments'
     file:
       path: /tmp/jtr
       state: absent
 
-  when: not john_binary.stat.exists
   become: yes
   tags:
     - cracking
