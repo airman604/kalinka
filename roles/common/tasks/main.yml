@@ -4,4 +4,4 @@
 - include: golang.yml tags=common,golang
 # - include: composer.yml tags=common,composer,magescan
 - include: docker.yml tags=common,docker
-- include: tmux.conf tags=common,tmux
+- include: tmux.yml tags=common,tmux
