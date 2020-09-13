@@ -1,0 +1,27 @@
+https://github.com/gchq/CyberChef/releases/download/v9.21.0/CyberChef_v9.21.0.zip
+
+
+---
+- block:
+
+  - name: 'CyberChef : check existing installation'
+    stat:
+        path: /opt/CyberChef
+    register: cyberchef_binary
+
+  - block:
+    - name: 'CyberChef : determine the latest version'
+      shell: 'curl --silent "https://api.github.com/repos/gchq/CyberChef/releases/latest" | jq -r .tag_name'
+      register: cyberchef_version
+
+    - name: 'CybefChef : download and unpack binaries'
+      unarchive:
+        src: 'https://github.com/gchq/CyberChef/releases/download/{{ cyberchef_version.stdout }}/CyberChef_{{ cyberchef_version.stdout }}.zip'
+        dest: /opt/CyberChef
+        remote_src: yes        
+    when: not cyberchef_binary.stat.exists
+
+  become: yes
+  tags:
+    - desktop
+    - cyberchef

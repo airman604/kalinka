@@ -4,3 +4,4 @@
 - include: notable.yml tags=desktop
 - include: sublime.yml tags=desktop
 - include: syncthing.yml tags=desktop
+- include: cyberchef.yml tags=desktop
