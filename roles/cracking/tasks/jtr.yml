@@ -1,4 +1,10 @@
 ---
+- name: 'jtr : check if already installed'
+  stat:
+    path: /opt/jtr/john
+  register: john_binary
+
+
 - block:
 
   - name: 'jtr : clone repository'
@@ -60,6 +66,7 @@
       path: /tmp/jtr
       state: absent
 
+  when: not john_binary.stat.exists
   become: yes
   tags:
     - cracking
