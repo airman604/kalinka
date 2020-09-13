@@ -48,12 +48,12 @@
       src: /tmp/jtr/run/
     delegate_to: '{{ inventory_hostname }}'
 
-  - name: 'jtr : add to path'
-    lineinfile:
-      line: 'export PATH=/opt/jtr:$PATH'
-      path: /root/.zshrc
-      regex: 'export PATH=\/opt\/jtr\:\$PATH'
-      state: present
+  # - name: 'jtr : add to path'
+  #   lineinfile:
+  #     line: 'export PATH=/opt/jtr:$PATH'
+  #     path: /root/.zshrc
+  #     regex: 'export PATH=\/opt\/jtr\:\$PATH'
+  #     state: present
 
   - name: 'jtr : remove build fragments'
     file:
