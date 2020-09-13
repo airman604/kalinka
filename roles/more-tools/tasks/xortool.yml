@@ -1,9 +1,10 @@
 ---
 - block:
 
-  - pip:
-    name: xortool
-    extra_args: --user
+  - name: 'xortool : install for user'
+    pip:
+      name: xortool
+      extra_args: --user
 
   tags:
     - crypto
