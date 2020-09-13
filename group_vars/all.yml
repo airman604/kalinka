@@ -1,0 +1,6 @@
+---
+enable_firewall: no # set to yes to enable ufw firewall
+trusted_ssh_ip: any
+apt_cache_timeout: 3600
+tool_install_dir: '{{ ansible_facts['env']['HOME'] }}/tools'
+shell: fish

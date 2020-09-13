@@ -1,0 +1,14 @@
+---
+- block:
+
+  - name: 'Notable : check installation status'
+    package_facts:
+      manager: auto
+
+  - name: 'Notable : download and install deb package'
+    apt:
+      deb: 'https://download.notable.app/?target=deb'
+    become: yes
+    when: "'notable' not in ansible_facts.packages"
+  
+  tags: desktop

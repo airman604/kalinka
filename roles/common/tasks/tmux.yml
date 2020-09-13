@@ -1,0 +1,25 @@
+---
+- block:
+
+  - name: 'tmux : install'
+    apt:
+      name:
+        - tmux
+      state: present
+    become: yes
+
+  - name: 'tmux : check existing config'
+    stat:
+      path: '~/.tmux.conf'
+    register: tmux_conf
+
+  - name: 'tmux : config'
+    get_url:
+      url: https://raw.githubusercontent.com/airman604/misc/master/tmux.conf
+      dest: '~/.tmux.conf'
+      mode: 0600
+    when: not tmux_conf.stat.exists
+
+  tags:
+    - common
+    - tmux

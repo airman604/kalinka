@@ -1,0 +1,32 @@
+---
+- block:
+  - name: 'golang : install apt package'
+    apt:
+      name: golang
+      state: latest
+    become: yes
+
+  - name: 'golang : add golang directory to $PATH (fish)'
+    lineinfile:
+      insertafter: EOF
+      line: 'SETUVAR fish_user_paths:{{ ansible_facts.ansible_user_dir }}/go/bin'
+      path: '~/.config/fish/fish_variables'
+      state: present
+
+  - name: 'gloang : create $GOPATH'
+    file:
+      path: '~/go'
+      state: directory
+      mode: '0700'
+
+  - name: 'golang : setup $GOPATH (fish)'
+    lineinfile:
+      insertafter: EOF
+      line: 'SETUVAR --path GOPATH:{{ ansible_facts.ansible_user_dir }}/go'
+      path: '~/.config/fish/fish_variables'
+      state: present
+
+  tags:
+    - common
+    - golang
+    - gobuster

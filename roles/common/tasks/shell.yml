@@ -1,0 +1,36 @@
+---
+- block:
+  - name: 'shell : install fish'
+    apt:
+      name: fish
+      state: present
+    become: yes
+
+  - name: 'shell : create fish config directory'
+    file:
+      mode: 0750
+      path: '~/.config/fish/functions'
+      recurse: yes
+      state: directory
+
+  - name: 'shell : configure fish prompt and functions (serve-this, masscan_port_list, masscan_ip_list, extract_unique_domains_from_dnsrecon_json)'
+    template:
+      dest: '~/.config/fish/functions/{{ item }}'
+      mode: 0640
+      src: '../templates/{{ item }}'
+    with_items:
+      - fish_prompt.fish
+      - serve-this.fish
+      - masscan_port_list.fish
+      - masscan_ip_list.fish
+      - extract_unique_domains_from_dnsrecon_json.fish
+
+  - name: 'shell : set default root shell'
+    user:
+      name: '{{ ansible_facts['user_id'] }}'
+      shell: /usr/bin/fish
+    become: yes
+
+  tags:
+    - common
+    - shell

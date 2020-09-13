@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: 'wpxf : install prerequisites'
+    apt:
+      name:
+        - build-essential
+        - liblzma-dev
+        - libsqlite3-dev
+        - patch
+        - zlib1g-dev
+      state: present
+      update_cache: yes
+
+  - name: 'wpxf : install gem'
+    shell: '/bin/bash -lc "gem install wpxf"'
+
+  become: yes
+  tags:
+    - web
+    - wpxf

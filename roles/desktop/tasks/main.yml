@@ -1,0 +1,5 @@
+---
+- include: insomnia.yml tags=desktop,web
+- include: vscode.yml, tags=desktop
+- include: notable.yml, tags=desktop
+- include: sublime.yml, tags=desktop

@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: 'Insomnia : add apt signing key'
+    apt_key:
+      url: https://insomnia.rest/keys/debian-public.key.asc
+      state: present
+
+  - name: 'Insomnia : add apt repository'
+    apt_repository:
+      repo: 'deb https://dl.bintray.com/getinsomnia/Insomnia /'
+      state: present
+      filename: insomnia
+
+  - name: 'Insomnia : install apt package'
+    apt:
+      name: insomnia
+      state: present
+
+  become: yes
+  tags: desktop, web

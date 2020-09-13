@@ -1,0 +1,20 @@
+---
+- block:
+
+  - name: 'pwntools : install prerequisites'
+    apt:
+      name:
+        - libssl-dev
+        - libffi-dev
+        - build-essential
+      state: present
+
+  - name: 'pwntools : install into global environment'
+    pip:
+      name: pwntools
+      state: present
+
+  become: yes
+  tags:
+    - binary-analysis
+    - pwntools

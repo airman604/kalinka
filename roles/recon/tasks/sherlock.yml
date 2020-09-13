@@ -1,0 +1,12 @@
+---
+- block:
+
+  - name: 'sherlock : install'
+    apt:
+      name: sherlock
+      state: present
+    become: yes
+
+  tags:
+    - recon
+    - sherlock

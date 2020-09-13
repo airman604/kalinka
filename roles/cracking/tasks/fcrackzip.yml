@@ -1,0 +1,12 @@
+---
+- block:
+
+  - name: 'fcrackzip : install package'
+    apt:
+      name: fcrackzip
+      state: present
+
+  become: yes
+  tags:
+    - cracking
+    - fcrackzip

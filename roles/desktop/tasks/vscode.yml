@@ -1,0 +1,21 @@
+---
+- block:
+
+  - name: 'VS Code : add apt signing key'
+    apt_key:
+      url: https://packages.microsoft.com/keys/microsoft.asc
+      state: present
+
+  - name: 'VS Code : add apt repository'
+    apt_repository:
+      repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+      state: present
+      filename: vscode
+
+  - name: 'VS Code : install apt package'
+    apt:
+      name: code
+      state: present
+
+  become: yes
+  tags: desktop

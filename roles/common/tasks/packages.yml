@@ -1,0 +1,29 @@
+---
+- block:
+
+  - name: 'packages : update apt cache'
+    apt:
+      update_cache: yes
+
+  - name: 'packages : install common packages'
+    apt:
+      name:
+        - apt-transport-https
+        - awscli
+        - gnupg2
+        - jq
+        - openvpn
+        - powershell
+        - software-properties-common
+      state: present
+
+  - name: 'packages : install virtualenv under Python 2'
+    pip:
+      executable: pip
+      name: virtualenv
+      state: present
+
+  become: yes
+  tags:
+    - common
+    - packages

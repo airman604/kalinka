@@ -1,0 +1,16 @@
+---
+- block:
+
+  - name: 'SecLists : clone repository'
+    git:
+      accept_hostkey: yes
+      clone: yes
+      depth: 1
+      dest: /opt/SecLists
+      force: yes
+      repo: https://github.com/danielmiessler/SecLists.git
+
+  become: yes
+  tags:
+    - password-attacks
+    - seclists
