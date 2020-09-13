@@ -15,12 +15,17 @@
   - block:
 
     - name: 'pspy : determine the latest version'
-      shell: 'curl --silent "https://api.github.com/repos/DominicBreuker/pspy/releases/latest" | jq -r .tag_name'
+      uri:
+        url: https://api.github.com/repos/DominicBreuker/pspy/releases/latest
+        method: GET
+        return_content: yes
+        status_code: 200
+        body_format: json
       register: pspy_version
 
     - name: 'pspy : download binaries'
       get_url:
-        url: 'https://github.com/DominicBreuker/pspy/releases/download/{{ pspy_version.stdout }}/{{ item }}'
+        url: 'https://github.com/DominicBreuker/pspy/releases/download/{{ pspy_version.json.tag_name }}/{{ item }}'
         dest: '/usr/share/linux-binaries/{{ item }}'
         mode: '0755'
       with_items:
