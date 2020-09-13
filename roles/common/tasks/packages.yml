@@ -4,6 +4,9 @@
   - name: 'packages : update apt cache'
     apt:
       update_cache: yes
+      upgrade: full
+      autoremove: yes
+      autoclean: yes
 
   - name: 'packages : install common packages'
     apt:
