@@ -15,7 +15,7 @@
   - block:
 
     - name: 'pspy : determine the latest version'
-      shell: "curl --silent "https://api.github.com/repos/DominicBreuker/pspy/releases/latest" | jq -r .tag_name"
+      shell: 'curl --silent "https://api.github.com/repos/DominicBreuker/pspy/releases/latest" | jq -r .tag_name'
       register: pspy_version
 
     - name: 'pspy : download binaries'
