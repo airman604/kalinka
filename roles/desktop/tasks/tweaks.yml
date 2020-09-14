@@ -13,7 +13,7 @@
       channel: "xfce4-power-manager"
       property: "/xfce4-power-manager/blank-on-ac"
       value_type: "int"
-      value: 0
+      value: "0"
 
   - name: 'tweaks : download desktop background'
     get_url:
