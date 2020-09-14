@@ -8,6 +8,13 @@
       value_type: "bool"
       value: "false"
 
+  - name: 'tweaks : turn off screensaver (xfconf)'
+    xfconf:
+      channel: "xfce4-power-manager"
+      property: "/xfce4-power-manager/blank-on-ac"
+      value_type: "int"
+      value: 0
+
   - name: 'tweaks : download desktop background'
     get_url:
       url: https://unsplash.com/photos/Ys-DBJeX0nE/download?force=true
