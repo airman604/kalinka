@@ -10,6 +10,7 @@
 
 - include: empire.yml tags=exploitation,empire
 - include: powersploit.yml tags=exploitation,powersploit
+- include: nishang.yml tags=exploitation,nishang
 - include: supertty.yml tags=exploitation,supertty
 - include: payloadsallthethings.yml tags=exploitation,payloadsallthethings
 
