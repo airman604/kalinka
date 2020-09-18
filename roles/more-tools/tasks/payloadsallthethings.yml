@@ -12,5 +12,5 @@
 
   become: yes
   tags:
-    - password-attacks
-    - seclists
+    - exploitation
+    - payloadsallthethings

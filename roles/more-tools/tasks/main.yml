@@ -11,6 +11,7 @@
 - include: empire.yml tags=exploitation,empire
 - include: powersploit.yml tags=exploitation,powersploit
 - include: supertty.yml tags=exploitation,supertty
+- include: payloadsallthethings.yml tags=exploitation,payloadsallthethings
 
 - include: seclists.yml tags=password-attacks,seclists
 
